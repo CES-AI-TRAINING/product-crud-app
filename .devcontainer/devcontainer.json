@@ -1,0 +1,17 @@
+{
+  "name": "Node.js 24 (Dev Container)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:0-24",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "ms-vscode.vscode-typescript-next"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install",
+  "forwardPorts": [5173],
+  "remoteUser": "vscode"
+}
