@@ -1,0 +1,61 @@
+.app-sidebar {
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.app-sidebar ul {
+  padding: 0;
+  margin: 0;
+}
+
+.app-sidebar li {
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.app-sidebar li:last-child {
+  border-bottom: none;
+}
+
+.app-sidebar li a,
+.app-sidebar li > div {
+  display: block;
+  padding: 1rem 1.25rem;
+  color: #4a5568;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.app-sidebar li a::before,
+.app-sidebar li > div::before {
+  content: '→';
+  position: absolute;
+  left: 0.75rem;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.app-sidebar li:hover a,
+.app-sidebar li:hover > div {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  color: #667eea;
+  padding-left: 2rem;
+}
+
+.app-sidebar li:hover a::before,
+.app-sidebar li:hover > div::before {
+  opacity: 1;
+  left: 1rem;
+}
+
+.app-sidebar li:active a,
+.app-sidebar li:active > div {
+  background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+}

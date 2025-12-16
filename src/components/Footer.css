@@ -1,0 +1,38 @@
+.app-footer {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #4a5568;
+}
+
+.app-footer .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.app-footer .container > div {
+  font-size: 0.9rem;
+}
+
+.app-footer a {
+  color: #a0aec0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+  color: #cbd5e0;
+}
+
+@media (max-width: 768px) {
+  .app-footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
