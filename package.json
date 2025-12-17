@@ -11,7 +11,9 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "coverage": "vitest --coverage",
-    "coverage:open": "vitest --coverage && open coverage/index.html"
+    "coverage:open": "vitest --coverage && open coverage/index.html",
+    "e2e:dev": "vite",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.3.8",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.57.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",

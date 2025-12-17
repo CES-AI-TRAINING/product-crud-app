@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1765941859636" clover="3.2.0">
+  <project timestamp="1765941859636" name="All files">
+    <metrics statements="41" coveredstatements="38" conditionals="30" coveredconditionals="26" methods="19" coveredmethods="16" elements="90" coveredelements="80" complexity="0" loc="41" ncloc="41" packages="2" files="4" classes="4"/>
+    <package name="components">
+      <metrics statements="25" coveredstatements="22" conditionals="20" coveredconditionals="20" methods="14" coveredmethods="11"/>
+      <file name="Pagination.tsx" path="/Users/saravana/Training2/product-crud-app/src/components/Pagination.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="ProductCard.tsx" path="/Users/saravana/Training2/product-crud-app/src/components/ProductCard.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="ProductForm.tsx" path="/Users/saravana/Training2/product-crud-app/src/components/ProductForm.tsx">
+        <metrics statements="17" coveredstatements="14" conditionals="18" coveredconditionals="18" methods="7" coveredmethods="4"/>
+        <line num="11" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="7" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="16" coveredstatements="16" conditionals="10" coveredconditionals="6" methods="5" coveredmethods="5"/>
+      <file name="productService.ts" path="/Users/saravana/Training2/product-crud-app/src/services/productService.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="10" coveredconditionals="6" methods="5" coveredmethods="5"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="41" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
