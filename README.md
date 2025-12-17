@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# Product CRUD App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + TypeScript + Vite frontend for managing products via a REST API. This repository demonstrates a minimal CRUD UI, TypeScript best practices, and standard development scripts.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- List, create, update and delete products
+- TypeScript + React (Vite)
+- Fetching from a REST API (configurable base URL)
+- Linting and tests (if included in project)
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React + TypeScript
+- Vite
+- (Optional) React Query / Fetch API / Axios for HTTP
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js LTS (>= 16)
+- npm, yarn, or pnpm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone repository:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   git clone <repo-url>
+
+2. Install dependencies:
+
+   npm install
+
+   # or
+
+   yarn
+
+   # or
+
+   pnpm install
+
+## Environment
+
+The app expects an API base URL set via environment variables. Create a `.env` file in the project root if necessary:
+
+Vite example: `VITE_API_BASE_URL=http://localhost:3000`
+
+(Adjust the variable name if your project uses a different env key; see your code for the exact name.)
+
+## Common scripts
+
+Check `package.json` for the exact scripts in this repo. Typical commands:
+
+- `npm run dev` — Start development server (HMR)
+- `npm run build` — Build production artifacts
+- `npm run preview` — Preview production build locally
+- `npm run lint` — Run linter
+- `npm run test` — Run tests
+- `npm run typecheck` — Run TypeScript type checks
+
+## Development
+
+Start the dev server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open `http://localhost:5173` (or the port shown in the terminal) to view the app.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build & Preview
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Build for production:
+
+```bash
+npm run build
 ```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Testing & Linting
+
+Run tests and linters via their respective scripts:
+
+```bash
+npm run test
+npm run lint
+```
+
+## Troubleshooting
+
+- If the API requests fail, verify `VITE_API_BASE_URL` (or project's API env var) and that the backend is running.
+- If ports collide or HMR fails, restart the dev server.
+
+## Contributing
+
+Small focused PRs are preferred. Run lint and tests locally before submitting.
+
+## Links
+
+- Vite: <https://vitejs.dev>
+- React: <https://reactjs.org>

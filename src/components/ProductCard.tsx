@@ -1,15 +1,21 @@
-import type { Product } from '../types/product'
+import type { Product } from "../types/product";
 
 type Props = {
-  product: Product
-  onEdit: (p: Product) => void
-  onDelete: (id?: number) => void
-}
+  product: Product;
+  onEdit: (p: Product) => void;
+  onDelete: (id?: number) => void;
+};
 
 export default function ProductCard({ product, onEdit, onDelete }: Props) {
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.title} />
+      {product.image ? (
+        <img src={product.image} alt={product.title} />
+      ) : (
+        <div className="no-image" aria-hidden>
+          📦
+        </div>
+      )}
       <div className="info">
         <h3>{product.title}</h3>
         <p className="price">${product.price}</p>
@@ -20,5 +26,5 @@ export default function ProductCard({ product, onEdit, onDelete }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
