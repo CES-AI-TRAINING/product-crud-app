@@ -1,0 +1,141 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, devlops]
+  pull_request:
+    branches: [main, devlops]
+  workflow_dispatch:
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build application
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  security-scan:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          load: true
+          tags: product-crud-app:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Trivy scan - CRITICAL vulnerabilities (Fail on findings)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: product-crud-app:ci
+          format: "table"
+          severity: "CRITICAL"
+          exit-code: 1
+          ignore-unfixed: true
+          timeout: 10m
+        continue-on-error: false
+
+      - name: Trivy scan - HIGH vulnerabilities (Warnings only)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: product-crud-app:ci
+          format: "table"
+          severity: "HIGH"
+          exit-code: 0
+          ignore-unfixed: true
+          timeout: 10m
+        continue-on-error: true
+
+      - name: Trivy scan - Generate full JSON report
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: product-crud-app:ci
+          format: "json"
+          output: "trivy-results.json"
+          severity: "CRITICAL,HIGH"
+          ignore-unfixed: true
+          timeout: 10m
+        continue-on-error: true
+
+      - name: Upload Trivy scan results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-scan-results
+          path: trivy-results.json
+          retention-days: 30
+
+  smoke-test:
+    needs: security-scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Build Docker image for smoke test
+        run: docker build -t product-crud-app:ci .
+
+      - name: Run container
+        run: |
+          docker run -d --rm --name product-crud-app-test -p 8080:80 product-crud-app:ci
+          echo "Waiting for container to start..."
+          sleep 5
+
+      - name: Verify app responds with HTTP 200
+        run: |
+          echo "Testing if app is accessible..."
+          curl -f http://localhost:8080/ || (echo "Smoke test failed!" && docker ps -a && docker logs product-crud-app-test && exit 1)
+          echo "Smoke test passed! App is serving correctly."
+
+      - name: Stop container
+        if: always()
+        run: docker stop product-crud-app-test || true
+
+      - name: Show container logs on failure
+        if: failure()
+        run: docker logs product-crud-app-test || true
