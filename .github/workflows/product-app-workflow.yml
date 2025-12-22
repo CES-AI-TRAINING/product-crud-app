@@ -36,7 +36,7 @@ jobs:
           path: dist/
           retention-days: 7
 
-  security-scan:
+  build-docker-image-security-scan:
     needs: test-and-build
     runs-on: ubuntu-latest
     timeout-minutes: 15
