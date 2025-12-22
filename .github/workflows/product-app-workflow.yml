@@ -133,7 +133,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   smoke-test:
-    needs: security-scan
+    needs: build-docker-image-security-scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
