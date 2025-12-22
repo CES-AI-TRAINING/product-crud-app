@@ -28,6 +28,7 @@
 A simple CRUD application for managing products. The app provides a responsive UI for listing, creating, updating, viewing, and deleting products. It's implemented as a TypeScript React front-end (Vite) and interacts with a (REST) backend API.
 
 **Key assumptions:**
+
 - Backend exposes a REST API for product operations (could be a mock or real service).
 - The app targets modern browsers and will be deployed to a static hosting service (Vercel/Netlify) with the API hosted separately.
 
@@ -36,11 +37,13 @@ A simple CRUD application for managing products. The app provides a responsive U
 ## Goals & Non-Goals
 
 **Goals**
+
 - Clear, maintainable architecture suitable for small teams.
 - Good developer experience (TypeScript, linting, unit tests).
 - Easy to extend (add search, filters, auth).
 
 **Non-Goals**
+
 - Not intended to be a full e-commerce platform.
 - No heavy state-management framework (e.g., Redux) unless necessary.
 
@@ -100,17 +103,18 @@ Example Product model:
 
 ```ts
 interface Product {
-  id: string;            // UUID
+  id: string; // UUID
   name: string;
   description?: string;
-  price: number;         // cents or float (pick one and be consistent)
+  price: number; // cents or float (pick one and be consistent)
   inventory: number;
-  createdAt: string;     // ISO timestamp
+  createdAt: string; // ISO timestamp
   updatedAt?: string;
 }
 ```
 
 Validation rules:
+
 - `name`: required, max length 255
 - `price`: >= 0
 - `inventory`: integer >= 0
@@ -138,6 +142,7 @@ Responses should be standard JSON with appropriate HTTP status codes and error p
 - Forms: use controlled components or a lightweight library (React Hook Form) for validation and accessibility.
 
 UX considerations:
+
 - Add loading states and graceful error messages.
 - Use optimistic updates for create/update/delete where appropriate.
 
